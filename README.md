@@ -33,9 +33,10 @@ working inside a Codespace.
 
 ## Codespace Notes Per Practical
 
-**01 — System Maintenance:** everything runs in the terminal as-is. `df`, `du`, `ps`, `grep`, `tail` all
-work normally. `cron` itself isn't running inside the container, so for the alert-scheduling step, just
-write out the `crontab -e` line as instructed — you don't need it to actually fire.
+**01 — System Maintenance:** this one is basic on purpose — no scripting. `sample_system_log.txt` is a
+plain-English log you read in the file explorer or a text editor, not the terminal. `quick_reference.md`
+has the two simple commands (`df -h` and `top`) for anyone who wants to try them, but nothing in the
+handout requires a Codespace at all — Notepad and File Explorer work just as well.
 
 **02 — Data Formats:** Python, pandas and matplotlib are pre-installed. Run:
 ```

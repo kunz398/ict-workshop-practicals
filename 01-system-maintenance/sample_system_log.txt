@@ -1,0 +1,17 @@
+Tuesday - Website System Log
+
+09:00  OK        Website running normally
+09:15  OK        Backup completed successfully
+10:00  OK        Weather data updated normally
+10:45  WARNING   Disk space getting full (76% used)
+11:00  OK        Weather data updated normally
+11:20  WARNING   Disk space getting full (91% used)
+11:40  ERROR     Website could not save new data - disk is full
+11:40  ERROR     Website showing an error to visitors
+11:41  ERROR     Website tried to restart, but disk is still full
+11:52  INFO      Staff member logged in to check the problem
+11:55  FIXED     Old files deleted, disk space freed up
+11:56  OK        Website working again
+12:00  OK        Weather data updated normally
+12:30  OK        Disk space back to normal (24% used)
+13:45  OK        Backup completed successfully
