@@ -1,4 +1,4 @@
-# Quick Reference — Commands You Used
+# Quick Reference - Commands You Used
 
 Keep this open on your phone or laptop during and after the workshop.
 
