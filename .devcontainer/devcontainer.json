@@ -1,0 +1,27 @@
+{
+  "name": "COSPPac ICT Workshop Practicals",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "pip install --user pandas matplotlib",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ritwickdey.LiveServer"
+      ]
+    }
+  },
+  "forwardPorts": [8000, 5500],
+  "portsAttributes": {
+    "8000": {
+      "label": "Python HTTP server preview",
+      "onAutoForward": "openPreview"
+    },
+    "5500": {
+      "label": "Live Server preview",
+      "onAutoForward": "openPreview"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# Generated during the practicals - not part of the source materials
+alert.log
+wave_height_plot.png
+__pycache__/
+*.pyc
+
+# Editor / OS
+.DS_Store
