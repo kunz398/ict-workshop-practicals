@@ -56,6 +56,12 @@ python3 -m http.server 8000
 There's also a Map Preview extension pre-installed - right-click `sample_stations.geojson` in the file
 explorer and choose **Preview Geo Data** to see it plotted on a map without opening the HTML page at all.
 
+A few more format-specific extensions are pre-installed to make the raw files nicer to look at:
+- **CSV** - open `sample_wave_buoy.csv` and it renders as a spreadsheet-style grid instead of plain text.
+- **JSON Crack** - open `sample_forecast_snippet.json` or `sample_stations.geojson`, then use the JSON
+  Crack panel to see it as an interactive graph instead of nested brackets.
+- **XML** - open `sample_station_metadata.xml` for formatting, validation and folding.
+
 **03 - Embedding & 04 - API Integration:** these need a live browser preview instead of double-clicking
 the HTML file (there's no desktop to double-click on). From the terminal, in the relevant folder, run:
 ```

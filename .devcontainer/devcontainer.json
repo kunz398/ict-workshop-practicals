@@ -10,7 +10,10 @@
       "extensions": [
         "ms-python.python",
         "ritwickdey.LiveServer",
-        "jumpinjackie.vscode-map-preview"
+        "jumpinjackie.vscode-map-preview",
+        "ReprEng.csv",
+        "AykutSarac.jsoncrack-vscode",
+        "redhat.vscode-xml"
       ]
     }
   },
