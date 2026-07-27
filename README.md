@@ -1,10 +1,7 @@
 # COSPPac Regional ICT Workshop - Practicals
 
-Melbourne, 24–28 August 2026
 
 This repo contains the hands-on materials for all five practical sessions in the workshop. It's set up to
-run entirely in **GitHub Codespaces** - a full coding environment in your browser, with Python, git and
-GitHub's `gh` command-line tool already installed. You don't need to install anything on your own laptop.
 
 ## How to Start
 
@@ -13,10 +10,8 @@ GitHub's `gh` command-line tool already installed. You don't need to install any
 3. You'll get a full VS Code environment in your browser, with a terminal at the bottom.
 4. Open the folder for whichever practical you're doing.
 
-> **Facilitators:** mark this repository as a **Template** (Settings → Template repository) so each
-> participant clicks **Use this template** to get their own copy, instead of everyone editing the same repo
-> at once.
 
+> participant clicks **Use this template** to get their own copy
 ## Practicals
 
 | Folder | Practical | What you'll use |
@@ -91,5 +86,4 @@ gh repo create cosppac-ict-workshop-practicals --public --source=. --push
 ```
 (or create the empty repo on github.com first, then `git remote add origin <url>` and `git push -u origin main`)
 
-Then go to **Settings → Template repository** and tick the box, so participants use **Use this template**
-instead of forking or cloning directly.
+
