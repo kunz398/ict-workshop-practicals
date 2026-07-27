@@ -33,9 +33,10 @@ working inside a Codespace.
 
 ## Codespace Notes Per Practical
 
-**01 — System Maintenance:** the simplest practical in the workshop — no terminal, no commands. Just open
-`sample_system_log.txt` in a text editor and read it. Nothing here requires a Codespace at all; Notepad on
-your own laptop works exactly as well.
+**01 — System Maintenance:** the core practical is just reading `sample_system_log.txt` in a text editor —
+no terminal, no Codespace needed, Notepad on your own laptop works exactly as well. The handout has one
+optional extra at the end, only for those using a Codespace: two look-only terminal commands, `df -h`
+(disk space) and `top` (what's running). Nothing to type beyond the one command each, nothing to fix.
 
 **02 — Data Formats:** Python, pandas and matplotlib are pre-installed. Run:
 ```
