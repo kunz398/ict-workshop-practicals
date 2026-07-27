@@ -1,33 +1,32 @@
-# API Reference — Free APIs You Can Use Today
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Sea Level Widget</title>
+</head>
+<body>
+  <h1>Live Sea Level - SPC Ocean Observations</h1>
+  <div id="sea-level-widget">Loading...</div>
 
-| Source | What it provides | Access | Example URL |
-|---|---|---|---|
-| Open-Meteo | Hourly/daily weather forecasts for any Pacific lat/lon | Free / Open | `https://api.open-meteo.com/v1/forecast?latitude=-18.1&longitude=178.4&daily=precipitation_sum` |
-| ERDDAP (NOAA) | Ocean and climate gridded data - SST, wave height, chlorophyll | Free / Open | `https://coastwatch.pfeg.noaa.gov/erddap/index.html` |
-| COSPPac Tools | COSPPac databases and workflows | On request | Check with Bureau for endpoint URLs |
-| WIS2.0 (WMO) | Global met data exchange - observations and forecasts | Free / Open | `https://wis2.wmo.int` |
-| Pacific Data Hub | SPC data for the Pacific - indicators and environmental statistics | Free / Open | `https://pacificdata.org` |
+  <script>
+    // CHANGE this to another station ID, then refresh the page.
+    // See api_reference.md for more station IDs (e.g. "upol", "mala").
+    const stationId = "auasi"; // Samoa, Auasi - Tide Gauge
 
-## Anatomy of a Request
-
-```
-https://api.open-meteo.com/v1/forecast?latitude=-18.1&longitude=178.4&daily=precipitation_sum
-```
-
-| Part | Meaning |
-|---|---|
-| `https://api.open-meteo.com` | Base URL - the server address |
-| `/v1/forecast` | Endpoint - which data you're requesting |
-| `?latitude=...&longitude=...&daily=...` | Parameters - filter the response |
-
-## Fetch in JavaScript
-
-```js
-fetch("https://api.open-meteo.com/v1/forecast" +
-      "?latitude=-18.1&longitude=178.4" +
-      "&daily=precipitation_sum")
-  .then(response => response.json())
-  .then(data => console.log(data));
-```
-
-Two concepts cover most of what you'll need: **fetch()** to make the request, and **JSON** to read the response.
+    fetch(`https://ocean-obs-api.spc.int/insitu/get_data/station/${stationId}?limit=1`)
+      .then(response => response.json())
+      .then(data => {
+        const latest = data.data[0];
+        const seaLevel = latest["sea_level (m)"];
+        const time = latest["time"];
+        document.getElementById("sea-level-widget").innerText =
+          data.display_name + ": " + seaLevel + " m (at " + time + ")";
+      })
+      .catch(error => {
+        document.getElementById("sea-level-widget").innerText = "Could not load sea level data.";
+        console.error(error);
+      });
+  </script>
+</body>
+</html>

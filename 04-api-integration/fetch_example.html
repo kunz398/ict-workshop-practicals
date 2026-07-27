@@ -3,26 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Rainfall Widget</title>
+  <title>Live Sea Level Widget</title>
 </head>
 <body>
-  <h1>Live Rainfall Forecast</h1>
-  <div id="weather-widget">Loading...</div>
+  <h1>Live Sea Level - SPC Ocean Observations</h1>
+  <div id="sea-level-widget">Loading...</div>
 
   <script>
-    // CHANGE these coordinates to your own country's capital, then refresh the page
-    const latitude = -18.1;
-    const longitude = 178.4;
+    // CHANGE this to another station ID, then refresh the page.
+    // See api_reference.md for more station IDs (e.g. "upol", "mala").
+    const stationId = "auasi"; // Samoa, Auasi - Tide Gauge
 
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=precipitation_sum&timezone=auto`)
+    fetch(`https://ocean-obs-api.spc.int/insitu/get_data/station/${stationId}?limit=1`)
       .then(response => response.json())
       .then(data => {
-        const today = data.daily.precipitation_sum[0];
-        document.getElementById("weather-widget").innerText =
-          "Today's expected rainfall: " + today + " mm";
+        const latest = data.data[0];
+        const seaLevel = latest["sea_level (m)"];
+        const time = latest["time"];
+        document.getElementById("sea-level-widget").innerText =
+          data.display_name + ": " + seaLevel + " m (at " + time + ")";
       })
       .catch(error => {
-        document.getElementById("weather-widget").innerText = "Could not load forecast.";
+        document.getElementById("sea-level-widget").innerText = "Could not load sea level data.";
         console.error(error);
       });
   </script>
