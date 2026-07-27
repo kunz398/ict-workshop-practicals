@@ -33,10 +33,9 @@ working inside a Codespace.
 
 ## Codespace Notes Per Practical
 
-**01 — System Maintenance:** this one is basic on purpose — no scripting. `sample_system_log.txt` is a
-plain-English log you read in the file explorer or a text editor, not the terminal. `quick_reference.md`
-has the two simple commands (`df -h` and `top`) for anyone who wants to try them, but nothing in the
-handout requires a Codespace at all — Notepad and File Explorer work just as well.
+**01 — System Maintenance:** the simplest practical in the workshop — no terminal, no commands. Just open
+`sample_system_log.txt` in a text editor and read it. Nothing here requires a Codespace at all; Notepad on
+your own laptop works exactly as well.
 
 **02 — Data Formats:** Python, pandas and matplotlib are pre-installed. Run:
 ```
