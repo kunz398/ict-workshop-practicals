@@ -4,66 +4,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Embed Examples - Pick One and Copy It</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
     body { font-family: Arial, sans-serif; max-width: 700px; margin: 30px auto; }
     .example { border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
     h2 { color: #02664d; }
+    pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
   </style>
 </head>
 <body>
   <h1>Three Ways to Embed a Product</h1>
-  <p>Open this page in a browser to see all three working. View page source (Ctrl+U) to see the code behind
-     each one. Copy whichever example suits your product into training_page_template.html.</p>
+  <p>Open this page in a browser to see all three working. Copy whichever "function Product() {...}"
+     block suits your product into training_page_template.html.</p>
 
   <div class="example">
-    <h2>Option 1: Static Image Embed</h2>
-    <p>Simplest option - points at an image file that is updated on a schedule elsewhere (e.g. a climate
-       graphic or forecast map your team already generates).</p>
-    <pre>&lt;img src="https://your-source/forecast-map.png"
-     alt="Weekly rainfall forecast map"
-     style="max-width:100%;"&gt;
-&lt;p&gt;Source: [Your NMHS] - updated daily&lt;/p&gt;</pre>
+    <h2>Option 1: Static Image</h2>
+    <div id="root-1"></div>
+    <pre>function Product() {
+  return (
+    &lt;div&gt;
+      &lt;img src="https://your-source/forecast-map.png"
+           alt="Weekly rainfall forecast map"
+           style={{maxWidth: '100%'}} /&gt;
+      &lt;p&gt;Source: [Your NMHS] - updated daily&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</pre>
   </div>
 
   <div class="example">
-    <h2>Option 2: Live Text Widget (rainfall example)</h2>
-    <p>Fetches live data from an API and displays it as text - updates automatically every time the page
-       loads, no manual editing needed.</p>
-    <div id="rain-widget">Loading...</div>
-    <pre>&lt;div id="rain-widget"&gt;Loading...&lt;/div&gt;
-&lt;script&gt;
-  fetch("https://api.open-meteo.com/v1/forecast?latitude=-18.1&amp;longitude=178.4&amp;daily=precipitation_sum")
-    .then(r =&gt; r.json())
-    .then(data =&gt; {
-      document.getElementById("rain-widget").innerText =
-        "Today's expected rainfall: " + data.daily.precipitation_sum[0] + " mm";
-    });
-&lt;/script&gt;</pre>
-  </div>
+    <h2>Option 2: Live Rainfall</h2>
+    <div id="root-2"></div>
+    <pre>function Product() {
+  const [rain, setRain] = React.useState("Loading...");
 
-  <div class="example">
-    <h2>Option 3: Live Text Widget (ocean example)</h2>
-    <p>Same idea, different product - a wave height reading.</p>
-    <div id="wave-widget">Loading...</div>
-    <pre>&lt;div id="wave-widget"&gt;Loading...&lt;/div&gt;
-&lt;script&gt;
-  // Replace this with your own wave buoy / ERDDAP data source
-  document.getElementById("wave-widget").innerText =
-    "Current wave height: 1.4 m (sample data)";
-&lt;/script&gt;</pre>
-  </div>
-
-  <script>
+  React.useEffect(() => {
     fetch("https://api.open-meteo.com/v1/forecast?latitude=-18.1&longitude=178.4&daily=precipitation_sum")
       .then(r => r.json())
-      .then(data => {
-        document.getElementById("rain-widget").innerText =
-          "Today's expected rainfall: " + data.daily.precipitation_sum[0] + " mm";
-      })
-      .catch(() => {
-        document.getElementById("rain-widget").innerText = "Today's expected rainfall: 12.4 mm (sample data)";
-      });
-    document.getElementById("wave-widget").innerText = "Current wave height: 1.4 m (sample data)";
+      .then(data => setRain(data.daily.precipitation_sum[0] + " mm"));
+  }, []);
+
+  return &lt;p&gt;Today's expected rainfall: {rain}&lt;/p&gt;;
+}</pre>
+  </div>
+
+  <div class="example">
+    <h2>Option 3: Live Sea Level (SPC Ocean Observations API)</h2>
+    <div id="root-3"></div>
+    <pre>function Product() {
+  const [level, setLevel] = React.useState("Loading...");
+
+  React.useEffect(() => {
+    fetch("https://ocean-obs-api.spc.int/insitu/get_data/station/auasi?limit=1")
+      .then(r => r.json())
+      .then(data => setLevel(data.data[0]["sea_level (m)"] + " m"));
+  }, []);
+
+  return &lt;p&gt;Current sea level (Samoa, Auasi): {level}&lt;/p&gt;;
+}</pre>
+  </div>
+
+  <script type="text/babel">
+    function Product1() {
+      return (
+        <div>
+          <img src="https://via.placeholder.com/300x120?text=Forecast+Map" alt="Weekly rainfall forecast map" style={{maxWidth: '100%'}} />
+          <p>Source: [Your NMHS] - updated daily</p>
+        </div>
+      );
+    }
+
+    function Product2() {
+      const [rain, setRain] = React.useState("Loading...");
+      React.useEffect(() => {
+        fetch("https://api.open-meteo.com/v1/forecast?latitude=-18.1&longitude=178.4&daily=precipitation_sum")
+          .then(r => r.json())
+          .then(data => setRain(data.daily.precipitation_sum[0] + " mm"))
+          .catch(() => setRain("12.4 mm (sample data)"));
+      }, []);
+      return <p>Today's expected rainfall: {rain}</p>;
+    }
+
+    function Product3() {
+      const [level, setLevel] = React.useState("Loading...");
+      React.useEffect(() => {
+        fetch("https://ocean-obs-api.spc.int/insitu/get_data/station/auasi?limit=1")
+          .then(r => r.json())
+          .then(data => setLevel(data.data[0]["sea_level (m)"] + " m"))
+          .catch(() => setLevel("1.48 m (sample data)"));
+      }, []);
+      return <p>Current sea level (Samoa, Auasi): {level}</p>;
+    }
+
+    ReactDOM.createRoot(document.getElementById('root-1')).render(<Product1 />);
+    ReactDOM.createRoot(document.getElementById('root-2')).render(<Product2 />);
+    ReactDOM.createRoot(document.getElementById('root-3')).render(<Product3 />);
   </script>
 </body>
 </html>

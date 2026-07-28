@@ -2,7 +2,9 @@
   "name": "COSPPac ICT Workshop Practicals",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": {}
   },
   "postCreateCommand": "pip install --user pandas matplotlib",
   "customizations": {
@@ -10,10 +12,12 @@
       "extensions": [
         "ms-python.python",
         "ritwickdey.LiveServer",
+        "ms-vscode.live-server",
         "jumpinjackie.vscode-map-preview",
         "ReprEng.csv",
         "AykutSarac.jsoncrack-vscode",
-        "redhat.vscode-xml"
+        "redhat.vscode-xml",
+        "cweijan.vscode-office"
       ]
     }
   },

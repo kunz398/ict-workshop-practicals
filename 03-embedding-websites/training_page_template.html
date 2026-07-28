@@ -4,22 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My NMHS Training Page</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
   <h1>Welcome to [Your Country] Weather Service</h1>
   <p>This is a training page for Practical 8 - Embedding Products into Websites.</p>
 
   <h2>Today's Product</h2>
-
-  <!-- ============================================================ -->
-  <!-- ADD YOUR EMBED CODE HERE                                      -->
-  <!-- Copy one example from embed_examples.html and paste it below -->
-  <!-- ============================================================ -->
-
-
-
-  <!-- ============================================================ -->
+  <div id="product-root"></div>
 
   <p><em>Last updated: [add today's date]</em></p>
+
+  <script type="text/babel">
+    // ============================================================
+    // ADD YOUR EMBED CODE HERE
+    // Copy one "function Product() {...}" example from
+    // embed_examples.html and paste it below
+    // ============================================================
+
+
+
+    // ============================================================
+
+    ReactDOM.createRoot(document.getElementById('product-root')).render(<Product />);
+  </script>
 </body>
 </html>
