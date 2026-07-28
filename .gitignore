@@ -4,5 +4,9 @@ wave_height_plot.png
 __pycache__/
 *.pyc
 
+# Node / npm (03-embedding-websites)
+node_modules/
+dist/
+
 # Editor / OS
 .DS_Store

@@ -18,7 +18,7 @@ This repo contains the hands-on materials for all five practical sessions in the
 |---|---|---|
 | `01-system-maintenance/` | Practical 4 - Maintenance Calendar & Troubleshooting Drill | Terminal (bash) |
 | `02-data-formats-storage/` | Practical 6 - Open & Plot Wave Buoy Data | Terminal (Python) |
-| `03-embedding-websites/` | Practical 8 - Website Embedding Exercise | Browser preview |
+| `03-embedding-websites/` | Practical 8 - Website Embedding Exercise | Terminal (npm) + browser preview |
 | `04-api-integration/` | Practical 7 - API Integration | Browser preview + terminal |
 | `05-github-push/` | Practical 10 - Pushing Code to GitHub | Terminal (git + gh) |
 
@@ -57,8 +57,19 @@ A few more format-specific extensions are pre-installed to make the raw files ni
   Crack panel to see it as an interactive graph instead of nested brackets.
 - **XML** - open `sample_station_metadata.xml` for formatting, validation and folding.
 
-**03 - Embedding & 04 - API Integration:** these need a live browser preview instead of double-clicking
-the HTML file (there's no desktop to double-click on). From the terminal, in the relevant folder, run:
+**03 - Embedding:** this is a real npm-based React app (Vite), not a plain HTML file. Node.js is
+pre-installed. Run:
+```
+cd 03-embedding-websites
+npm install
+npm run dev
+```
+A "Open in Browser" popup will appear for port 5173 (or check the **Ports** tab at the bottom of VS
+Code) - click it to see the page live. Edit `src/App.jsx` or `src/examples.jsx`, save, and the page
+updates automatically - no need to refresh manually.
+
+**04 - API Integration:** this one still needs a live browser preview instead of double-clicking the
+HTML file (there's no desktop to double-click on). From the terminal, in the relevant folder, run:
 ```
 python3 -m http.server 8000
 ```

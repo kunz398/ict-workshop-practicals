@@ -21,7 +21,7 @@
       ]
     }
   },
-  "forwardPorts": [8000, 5500],
+  "forwardPorts": [8000, 5500, 5173],
   "portsAttributes": {
     "8000": {
       "label": "Python HTTP server preview",
@@ -29,6 +29,10 @@
     },
     "5500": {
       "label": "Live Server preview",
+      "onAutoForward": "openPreview"
+    },
+    "5173": {
+      "label": "Vite dev server (React embedding practical)",
       "onAutoForward": "openPreview"
     }
   }
